@@ -14,9 +14,8 @@ function isEven (num){
     } else if ((num -1) == 0){
 return "false"; 
     } else {
-        num = num - 2
-return isEven(num);
+return isEven(num - 2);
     }
 }
 
-console.log(isEven(38));
+console.log(isEven(39));
