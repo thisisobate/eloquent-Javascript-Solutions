@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM world</title>
+</head>
+<body>
+    <!-- first section -->
+    <p>My ostrich Gertrude</p>
+    <p><img src="img/ostrich" alt="gertrude ostrich" id="gertrude"></p>
+    <p>paragrah 3</p>
+
+    <!-- first section -->
+    <p>The <img src="img/cat" alt="cat"> in the <img src="img/hat.png" alt="Hat">.</p>
+    <!-- <p><button onclick="replaceImages()">Replace</button></p> -->
+    <p style="text-align:center">
+        <img src="img/cat.png" style="position: relative; max-width: 50%;" alt="cat">
+    </p>
+
+    <script>
+        let ostrich = document.getElementById("gertrude")[0];
+        // console.log(ostrich.src);    
+        // changing the document
+        let paragraphs = document.body.getElementsByTagName("p");
+        document.body.insertBefore(paragraphs[2], paragraphs[0]);
+        // replace function
+        function replaceImages() {
+            let images = document.body.getElementsByTagName("img");
+            for (let i = images.length - 1; i >= 0; i--) {
+                let image = images[i];
+                if (image.alt){
+                    let text = document.createTextNode(image.alt);
+                    image.parentNode.replaceChild(text, image);
+                }
+            }
+        }
+        // animation
+        let cat = document.querySelector("img");
+        let angle = Math.PI / 2;
+        function animate(time, lastTime) {
+            if (lastTime != null) {
+                angle += (time - lastTime) * 0.001;
+            }
+            cat.style.top = (Math.sin(angle) * 20) + "px";
+            cat.style.left = (Math.cos(angle) * 200) + "px";
+            requestAnimationFrame(newTime => animate(newTime, time));
+        }
+        requestAnimationFrame(animate);
+    </script>
+</body>
+</html>
