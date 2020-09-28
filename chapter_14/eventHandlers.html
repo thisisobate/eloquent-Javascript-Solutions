@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>Click me</button>
+    <p>No handler here</p>
+    <p> this page turns violet when you hold the V key.</p>
+    <script>
+        let button = document.querySelector("button");
+        button.addEventListener("click", () => {
+            console.log("Button clicked");
+        });
+        window.addEventListener("keydown", event => {
+            if (event.key == "v") {
+                document.body.style.background = "violet";
+            }
+        });
+        window.addEventListener("keyup", event => {
+            if (event.key == "v") {
+                document.body.style.background = "";
+            }
+        });
+    </script>
+</body>
+</html>
